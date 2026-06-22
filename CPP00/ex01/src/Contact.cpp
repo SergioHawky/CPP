@@ -6,7 +6,7 @@
 /*   By: seilkiv <seilkiv@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 14:24:43 by seilkiv           #+#    #+#             */
-/*   Updated: 2026/06/03 16:54:29 by seilkiv          ###   ########.fr       */
+/*   Updated: 2026/06/22 16:18:29 by seilkiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void    Contact::setContact(std::string f, std::string l, std::string n, std::st
     _isSet = 1;
 }
 
-void    Contact::printRow(void)
+void    Contact::printRow() const
 {
     std::string f = first;
     std::string l = last;
@@ -44,7 +44,7 @@ void    Contact::printRow(void)
     std::cout << std::setw(10) << std::right << n << std::endl;
 }
 
-void    Contact::printContact(void)
+void    Contact::printContact() const
 {
     std::cout << "----------Contact Info----------" << std::endl;
     std::cout << "First Name:      " << first << std::endl;
@@ -55,7 +55,7 @@ void    Contact::printContact(void)
     std::cout << "--------------------------------" << std::endl;
 }
 
-int     Contact::isEmpty(void)
+int     Contact::isEmpty() const
 {
     if (_isSet)
         return (0);

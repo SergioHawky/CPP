@@ -6,7 +6,7 @@
 /*   By: seilkiv <seilkiv@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 14:02:33 by seilkiv           #+#    #+#             */
-/*   Updated: 2026/06/03 14:20:02 by seilkiv          ###   ########.fr       */
+/*   Updated: 2026/06/22 15:30:59 by seilkiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ int main(int ac, char **av)
         {
             for (size_t j = 0; j < strlen(av[i]); j++)
             {
-                av[i][j] = toupper(av[i][j]);
+                av[i][j] = toupper((unsigned char)(av[i][j]));
             }
-            std::cout << av[i] << " ";
+            std::cout << av[i];
+            if (i < ac - 1)
+                std::cout << " ";
         }
         std::cout << std::endl;
     }

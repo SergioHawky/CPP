@@ -6,12 +6,11 @@
 /*   By: seilkiv <seilkiv@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 14:24:46 by seilkiv           #+#    #+#             */
-/*   Updated: 2026/06/03 17:09:44 by seilkiv          ###   ########.fr       */
+/*   Updated: 2026/06/22 16:38:48 by seilkiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-#include <iomanip>
 
 PhoneBook::PhoneBook()
 {
@@ -29,27 +28,32 @@ void    PhoneBook::addContact(void)
     while (first.empty())
     {
         std::cout << "Enter first name: ";
-        std::getline(std::cin, first);
+        if (!std::getline(std::cin, first))
+            return ;
     }
     while (last.empty())
     {
         std::cout << "Enter last name: ";
-        std::getline(std::cin, last);
+        if (!std::getline(std::cin, last))
+            return ;
     }
     while (nick.empty())
     {
         std::cout << "Enter nickname: ";
-        std::getline(std::cin, nick);
+        if (!std::getline(std::cin, nick))
+            return ;
     }
     while (phone.empty())
     {
         std::cout << "Enter phone number: ";
-        std::getline(std::cin, phone);
+        if (!std::getline(std::cin, phone))
+            return ;
     }
     while (dark.empty())
     {
         std::cout << "Enter darkest secret: ";
-        std::getline(std::cin, dark);
+        if (!std::getline(std::cin, dark))
+            return ;
     }
 
     contacts[count % 8].setContact(first, last, nick, phone, dark);
@@ -59,7 +63,7 @@ void    PhoneBook::addContact(void)
 
 void    PhoneBook::searchContact(void)
 {
-    int inp;
+    int indice;
 
     std::cout << std::setw(10) << std::right << "Index" << "|";
     std::cout << std::setw(10) << std::right << "First Name" << "|";
@@ -74,15 +78,15 @@ void    PhoneBook::searchContact(void)
         contacts[i].printRow();
     }
     std::cout << "Enter index >> ";
-    std::cin >> std::ws >> inp;
-    if (!std::cin || inp < 1 || inp > 8)
+    std::cin >> std::ws >> indice;
+    if (!std::cin || indice < 1 || indice > 8)
     {
         std::cin.clear();
         std::cin.ignore(1000, '\n');
         std::cout << "Invalid index!" << std::endl;
         return ;
     }
-    if (contacts[inp - 1].isEmpty())
+    if (contacts[indice - 1].isEmpty())
     {
         std::cin.clear();
         std::cin.ignore(1000, '\n');
@@ -90,5 +94,5 @@ void    PhoneBook::searchContact(void)
         return ;
     }
     std::cin.ignore(1000, '\n');
-    contacts[inp - 1].printContact();
+    contacts[indice - 1].printContact();
 }

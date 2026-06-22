@@ -6,7 +6,7 @@
 /*   By: seilkiv <seilkiv@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 14:24:39 by seilkiv           #+#    #+#             */
-/*   Updated: 2026/06/03 16:52:01 by seilkiv          ###   ########.fr       */
+/*   Updated: 2026/06/22 15:48:24 by seilkiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main()
     {
         std::cout << "Please enter a command (ADD, SEARCH, EXIT): " << std::endl;
         std::cout << ">> ";
-        getline(std::cin, input);
+        std::getline(std::cin, input);
         if (!std::cin)
         {
             std::cerr << "Error reading input." << std::endl;

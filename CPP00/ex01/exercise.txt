@@ -1,0 +1,39 @@
+CPP00 - ex01: phonebook
+========================
+
+Goal:
+Build a simple phonebook application that stores up to 8 contacts. The user
+interacts via three commands: ADD, SEARCH, and EXIT.
+
+Files:
+  - inc/Contact.hpp         -> Contact class declaration
+  - inc/PhoneBook.hpp       -> PhoneBook class declaration
+  - src/Contact.cpp         -> Contact implementation
+  - src/PhoneBook.cpp       -> PhoneBook implementation
+  - src/main.cpp            -> main loop (menu)
+  - Makefile
+
+Classes:
+
+  Contact:
+    - Stores: first name, last name, nickname, phone number, darkest secret.
+    - setContact() fills the fields.
+    - printRow() displays a truncated (max 10 chars) row for the SEARCH table.
+    - printContact() prints all details.
+    - isEmpty() checks if the slot has been filled.
+
+  PhoneBook:
+    - Holds an array of 8 Contacts and a count of how many have been added.
+    - addContact() prompts the user for each field (loops until non-empty)
+      and stores it in contacts[count % 8] (circular buffer — oldest contact
+      is overwritten after the 8th).
+    - searchContact() displays a table of all non-empty contacts with index,
+      first name, last name, nickname (truncated to 10 chars). Then prompts
+      for an index and shows that contact's full info.
+
+Usage:
+  make              -> produces the phonebook binary
+  ./phonebook       -> starts the interactive prompt
+  Commands: ADD, SEARCH, EXIT
+
+Build with c++98, -Wall -Wextra -Werror.
