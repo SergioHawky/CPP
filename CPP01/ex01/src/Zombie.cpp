@@ -6,7 +6,7 @@
 /*   By: seilkiv <seilkiv@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 17:45:11 by seilkiv           #+#    #+#             */
-/*   Updated: 2026/06/19 17:47:31 by seilkiv          ###   ########.fr       */
+/*   Updated: 2026/07/02 19:53:46 by seilkiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,20 @@
 
 Zombie::Zombie()
 {
+	std::cout << "-> Zombie created" << std::endl;
 }
 
 Zombie::~Zombie()
 {
-	std::cout << this->_name << ": rot too much" << std::endl;
+	std::cout << "-> Zombie destroyed" << std::endl;
 }
 
 void	Zombie::announce()
 {
-	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-void	Zombie::nameSetter(std::string name)
+void	Zombie::setName(std::string n)
 {
-	this->_name = name;
+	this->name = n;
 }

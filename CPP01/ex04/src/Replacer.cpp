@@ -6,77 +6,56 @@
 /*   By: seilkiv <seilkiv@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 18:03:23 by seilkiv           #+#    #+#             */
-/*   Updated: 2026/06/19 18:03:38 by seilkiv          ###   ########.fr       */
+/*   Updated: 2026/07/03 17:38:04 by seilkiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Replacer.hpp"
 
-Replacer::Replacer()
-{}
+Replacer::Replacer(std::string filename, std::string s1, std::string s2)
+{
+	this->filename = filename;
+	this->s1 = s1;
+	this->s2 = s2;
+}
 
 Replacer::~Replacer()
 {}
 
-void	Replacer::addArgs(std::string &og, std::string &s1, std::string &s2)
+bool Replacer::run()
 {
-	_og = og;
-	_s1 = s1;
-	_s2 = s2;
-}
+    std::ifstream input(filename.c_str());
+    if (!input.is_open())
+    {
+        std::cout << "Could not open file, aborting." << std::endl;
+        return false;
+    }
 
-void	Replacer::getContent()
-{
-	char	c;
-	for (int i = 0; _input.get(c); i++)
-		_replace.push_back(c);
-	_input.close();
-}
+    std::string line;
+    while (std::getline(input, line))
+    {
+        content += line;
+        content += '\n';
+    }
+    input.close();
 
-int	Replacer::setOut()
-{
-	size_t	p = 0;
-	int	flag = 0;
-	std::string new_file = _og + ".replace";
-	_output.open(new_file.c_str());
-	if (_s1.empty())
-	{
-		std::cout << "empty string, aborting" << std::endl;
-		return 1;
-	}
-	while ((p = _replace.find(_s1, p)) != std::string::npos)
-	{
-		_replace.erase(p, _s1.length());
-		_replace.insert(p, _s2);
-		p += _s2.length();
-		flag = 1;
-	}
-	if (flag)
-	{
-		_output << _replace;
-		_output.close();
-		return 0;
-	}
-	else if (flag == 0)
-	{
-		std::cout << "Couldn't find the first string inside the file, aborting execution." << std::endl;
-		return 1;
-	}
-	return 0;
-}
+    if (s1.empty())
+    {
+        std::cout << "empty string, aborting" << std::endl;
+        return false;
+    }
 
-int	Replacer::setInp()
-{
-	_input.open(_og.c_str());
-	if (_og.empty())
-	{
-		std::cout << "Empty file, aborting." << std::endl;
-		return 1;
-	}
-	return 0;
-}
+    std::string::size_type p = 0;
+    while ((p = content.find(s1, p)) != std::string::npos)
+    {
+        content.erase(p, s1.length());
+        content.insert(p, s2);
+        p += s2.length();
+    }
 
-std::string	Replacer::getFile() const
-{
-	return (_og);
+    std::ofstream output((filename + ".replace").c_str());
+    output << content;
+    output.close();
+
+    return true;
 }

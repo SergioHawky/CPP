@@ -6,29 +6,27 @@
 /*   By: seilkiv <seilkiv@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 17:56:46 by seilkiv           #+#    #+#             */
-/*   Updated: 2026/06/19 18:00:52 by seilkiv          ###   ########.fr       */
+/*   Updated: 2026/07/03 11:10:57 by seilkiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
-#include "HumanA.hpp"
-#include "HumanB.hpp"
 
 Weapon::Weapon(std::string type)
 {
-	this->_type = type;
+	this->type = type;
 }
 
 Weapon::~Weapon()
 {
 }
 
-std::string Weapon::getType() const
+const std::string& Weapon::getType() const
 {
-	return _type;
+	return type;
 }
 
 void	Weapon::setType(std::string type)
 {
-	this->_type = type;
+	this->type = type;
 }

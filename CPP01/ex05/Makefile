@@ -2,7 +2,7 @@ NAME = Harl
 CC = c++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 INCLUDES = -I inc
-SRCS = src/main.cpp Harl.cpp
+SRCS = src/main.cpp src/Harl.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)

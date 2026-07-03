@@ -6,7 +6,7 @@
 /*   By: seilkiv <seilkiv@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 17:45:13 by seilkiv           #+#    #+#             */
-/*   Updated: 2026/06/19 17:47:54 by seilkiv          ###   ########.fr       */
+/*   Updated: 2026/07/02 19:50:48 by seilkiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 Zombie*	zombieHorde(int N, std::string name)
 {
 	Zombie	*zomb = new Zombie[N];
+	
 	for (int i = 0; i < N; i++)
-		zomb[i].nameSetter(name);
+		zomb[i].setName(name);
 	return zomb;
 }

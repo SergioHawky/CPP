@@ -6,7 +6,7 @@
 /*   By: seilkiv <seilkiv@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 18:05:06 by seilkiv           #+#    #+#             */
-/*   Updated: 2026/06/19 18:05:15 by seilkiv          ###   ########.fr       */
+/*   Updated: 2026/07/02 20:33:10 by seilkiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 Harl::Harl()
 {
-	_level[0] = "DEBUG";
-	_level[1] = "INFO";
-	_level[2] = "WARNING";
-	_level[3] = "ERROR";
+	level[0] = "DEBUG";
+	level[1] = "INFO";
+	level[2] = "WARNING";
+	level[3] = "ERROR";
 }
 
 Harl::~Harl()
@@ -43,10 +43,10 @@ void	Harl::error()
 	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
-void	Harl::complain(std::string level)
+void	Harl::complain(std::string l)
 {
 	fc func[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	for (int i = 0; i < 4; i++)
-		if (_level[i] == level)
+		if (l == level[i])
 			(this->*func[i])();
 }

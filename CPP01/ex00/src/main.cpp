@@ -6,15 +6,11 @@
 /*   By: seilkiv <seilkiv@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 17:26:35 by seilkiv           #+#    #+#             */
-/*   Updated: 2026/06/19 17:28:27 by seilkiv          ###   ########.fr       */
+/*   Updated: 2026/07/02 19:26:50 by seilkiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
-
-Zombie* newZombie(std::string name);
-
-void	randomChump(std::string name);
 
 int	main()
 {
@@ -22,5 +18,5 @@ int	main()
 	Zombie	*p = newZombie("muncher");
 	p->announce();
 	delete p;
-	return 1;
+	return 0;
 }

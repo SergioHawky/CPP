@@ -6,20 +6,19 @@
 /*   By: seilkiv <seilkiv@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 17:45:08 by seilkiv           #+#    #+#             */
-/*   Updated: 2026/06/19 17:47:09 by seilkiv          ###   ########.fr       */
+/*   Updated: 2026/07/02 20:00:29 by seilkiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie*	zombieHorde(int N, std::string name);
-
 int	main()
 {
-	Zombie	*zomb;
-	zomb = zombieHorde(5, "walker");
-	for (int i = 0; i < 5; i++)
+	int n = 5;
+	Zombie	*zomb = zombieHorde(n, "walker");
+	
+	for (int i = 0; i < n; i++)
 		zomb[i].announce();
 	delete[] zomb;
-	return 1;
+	return 0;
 }

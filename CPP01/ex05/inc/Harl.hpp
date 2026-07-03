@@ -6,16 +6,20 @@
 /*   By: seilkiv <seilkiv@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 18:05:34 by seilkiv           #+#    #+#             */
-/*   Updated: 2026/06/19 18:05:35 by seilkiv          ###   ########.fr       */
+/*   Updated: 2026/07/02 20:29:35 by seilkiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef HARL_HPP
+# define HARL_HPP
+
+# include <iostream>
+# include <string>
 
 class Harl
 {
 private:
-	std::string	_level[4];
+	std::string	level[4];
 	void	debug();
 	void	info();
 	void	warning();
@@ -28,3 +32,5 @@ public:
 };
 
 typedef	void (Harl::*fc)(void);
+
+#endif
