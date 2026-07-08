@@ -6,43 +6,43 @@
 /*   By: seilkiv <seilkiv@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 18:36:12 by seilkiv           #+#    #+#             */
-/*   Updated: 2026/07/03 19:05:53 by seilkiv          ###   ########.fr       */
+/*   Updated: 2026/07/07 15:28:12 by seilkiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "../inc/Fixed.hpp"
 
 const int	Fixed::_bit = 8;
 
 Fixed::Fixed()
 {
-	_fixed = 0;
+	this->_fixed = 0;
 	std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed& ref)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = ref;
+	this->_fixed = ref.getRawBits();
 }
 
 Fixed::Fixed(const int fix)
 {
 	std::cout << "Int constructor called" << std::endl;
-	setRawBits(fix << _bit);
+	this->_fixed = fix << _bit;
 }
 
 Fixed::Fixed(const float fl)
 {
 	std::cout << "Float constructor called" << std::endl;
-	setRawBits(roundf(fl * (1 << _bit)));
+	this->_fixed = roundf(fl * (1 << _bit));
 }
 
 Fixed	&Fixed::operator=(const Fixed &ref)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &ref)
-		_fixed = ref.getRawBits();
+		this->_fixed = ref.getRawBits();
 	return *this;
 }
 
@@ -53,7 +53,7 @@ Fixed::~Fixed()
 
 int		Fixed::getRawBits() const
 {
-	return _fixed;
+	return this->_fixed;
 }
 
 void	Fixed::setRawBits(int const raw)
@@ -63,12 +63,12 @@ void	Fixed::setRawBits(int const raw)
 
 float	Fixed::toFloat() const
 {
-	return ((float)getRawBits() / (1 << _bit));
+	return ((float)this->_fixed / (1 << _bit));
 }
 
 int		Fixed::toInt() const
 {
-	return (getRawBits() >> _bit);
+	return (this->_fixed >> _bit);
 }
 
 std::ostream& operator<<(std::ostream& os, const Fixed& obj)

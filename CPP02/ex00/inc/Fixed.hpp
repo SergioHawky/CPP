@@ -6,12 +6,13 @@
 /*   By: seilkiv <seilkiv@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 18:33:23 by seilkiv           #+#    #+#             */
-/*   Updated: 2026/07/03 19:11:55 by seilkiv          ###   ########.fr       */
+/*   Updated: 2026/07/07 15:57:51 by seilkiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef	FIXED_HPP
 # define FIXED_HPP
+
 # include <iostream>
 
 class Fixed
