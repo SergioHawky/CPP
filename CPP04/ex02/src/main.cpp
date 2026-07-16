@@ -6,7 +6,7 @@
 /*   By: seilkiv <seilkiv@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 13:38:55 by seilkiv           #+#    #+#             */
-/*   Updated: 2026/07/14 15:52:24 by seilkiv          ###   ########.fr       */
+/*   Updated: 2026/07/16 08:46:22 by seilkiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,133 +18,69 @@
 
 int main()
 {
-	// error if you try to initialize a Animal class object;
-	// Animal bull;
+    std::cout << "-- Animal test --" << std::endl;
+    {
+        // Animal a;
+        // Animal *a = new Animal();
 
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-
-	std::cout << "-- cleaning --" << std::endl;
-	delete j;
-	delete i;
-
-	std::cout << "\n-- CAT tests --\n" << std::endl;
-
-	Cat a;
-	Cat clone(a);
-	Cat b;
+        std::cout << "(Animal a; and new Animal() would not compile - uncomment to check)" << std::endl;
+    }
 	
-	std::cout << "\n";
+    std::cout << std::endl << "-- Array test --" << std::endl;
+    {
+        Animal* animals[4];
+        animals[0] = new Dog();
+        animals[1] = new Cat();
+        animals[2] = new Dog();
+        animals[3] = new Cat();
 
-	a.getBrain()->setIdea(0,"aaa");
-	std::cout << "-> " << a.getBrain()->getIdea(0) << std::endl;
-	std::cout << "-> " << a.getBrain()->getIdea(1) << std::endl;
+        for (int i = 0; i < 4; i++)
+            animals[i]->makeSound();
 
-	std::cout << "\n";
+        for (int i = 0; i < 4; i++)
+            delete animals[i];
+    }
 
-	clone.getBrain()->setIdea(0, "clone");
-	clone.getBrain()->setIdea(21, "ein­und­zwanzig");
-	std::cout << "-> " << clone.getBrain()->getIdea(0) << std::endl;
-	std::cout << "-> " << clone.getBrain()->getIdea(21) << std::endl;
+    std::cout << std::endl << "-- Deep copy test (Dog) --" << std::endl;
+    {
+        Dog original;
+        original.getBrain()->setIdea(0, "original idea");
 
-	std::cout << "\n";
+        Dog copy(original);
 
-	b = clone;
-	std::cout << "-> " << b.getBrain()->getIdea(0) << std::endl;
-	std::cout << "-> " << b.getBrain()->getIdea(21) << std::endl;
+        copy.getBrain()->setIdea(0, "modified idea");
 
-	std::cout << "\n";
+        std::cout << "Original idea[0]: " << original.getBrain()->getIdea(0) << std::endl;
+        std::cout << "Copy idea[0]:     " << copy.getBrain()->getIdea(0) << std::endl;
 
-	b = a;
-	std::cout << "\n";
+        if (original.getBrain() != copy.getBrain())
+            std::cout << "OK: brains have different addresses (deep copy)" << std::endl;
+        else
+            std::cout << "FAIL: same brain address (shallow copy!)" << std::endl;
+    }
 
-	std::cout << "-> " << b.getBrain()->getIdea(0) << std::endl;
-	std::cout << "-> " << b.getBrain()->getIdea(21) << std::endl;
+    std::cout << std::endl << "-- Deep copy test via operator= (Cat) --" << std::endl;
+    {
+        Cat a;
+        Cat b;
 
-	std::cout << "\n-- BRAIN test: --\n";
-	std::cout << "\n";
+        a.getBrain()->setIdea(0, "cat a idea");
+        b.getBrain()->setIdea(0, "cat b idea");
 
-	std::cout << "(brain_clone created from the clone's brain)\n";
-	Brain *brain_clone = clone.getBrain();
-	std::cout << "-> " << brain_clone->getIdea(0) << std::endl;
-	std::cout << "-> " << brain_clone->getIdea(21) << std::endl;
+        b = a;
 
-	std::cout << "\n(brain_a created from the cat a brain)\n";
-	Brain *brain_a(a.getBrain());
-	std::cout << "-> " << brain_a->getIdea(0) << std::endl;
-	std::cout << "-> " << brain_a->getIdea(21) << std::endl;
+        b.getBrain()->setIdea(1, "only in b");
 
-	std::cout << "\n-- ANIMALS array test: --\n";
-	std::cout << "\n";
+        std::cout << "Cat a idea[0]: " << a.getBrain()->getIdea(0) << std::endl;
+        std::cout << "Cat b idea[0]: " << b.getBrain()->getIdea(0) << std::endl;
+        std::cout << "Cat a idea[1]: " << a.getBrain()->getIdea(1) << std::endl;
+        std::cout << "Cat b idea[1]: " << b.getBrain()->getIdea(1) << std::endl;
 
-	Animal *pets[] = 
-	{ 
-		new Cat(),
-		new Dog(),
-		new Cat(),
-		new Dog(),
-	};
+        if (a.getBrain() != b.getBrain())
+            std::cout << "OK: brains have different addresses (deep copy)" << std::endl;
+        else
+            std::cout << "FAIL: same brain address (shallow copy!)" << std::endl;
+    }
 
-	std::cout << "\n";
-	for (int i = 0; i < 4; i++)
-		pets[i]->makeSound();
-	std::cout << "\n";
-
-	for (int i = 0; i < 4; i++)
-		delete pets[i];
-
-	std::cout << "\n-- CATS array test: --\n\n";
-
-	Cat *cats[] = 
-	{ 
-		new Cat(),
-		new Cat(),
-		new Cat(),
-		new Cat(),
-	};
-
-	std::cout << "\n";
-
-	for (int i = 0; i < 4; i++)
-		cats[i]->getBrain()->setIdea(0, "general idea");
-
-	cats[2]->getBrain()->setIdea(0, "VERY SPECIAL IDEA");
-	
-	for (int i = 0; i < 4; i++)
-		std::cout << "-> " << cats[i]->getBrain()->getIdea(0) << "\n";
-	
-	std::cout << "\n";
-
-	for (int i = 0; i < 4; i++)
-		delete cats[i];
-
-	std::cout << "\n-- DOGS array test: --\n\n";
-
-	Dog *dogs[] = 
-	{ 
-		new Dog(),
-		new Dog(),
-		new Dog(),
-		new Dog(),
-	};
-
-	std::cout << "\n";
-
-	for (int i = 0; i < 4; i++)
-		dogs[i]->getBrain()->setIdea(0, "general idea");
-
-	dogs[2]->getBrain()->setIdea(0, "VERY SPECIAL IDEA");
-	
-	for (int i = 0; i < 4; i++)
-	{
-		dogs[i]->makeSound();
-		std::cout << "-> " << dogs[i]->getBrain()->getIdea(0) << "\n";
-	}
-	
-	std::cout << "\n";
-
-	for (int i = 0; i < 4; i++)
-		delete dogs[i];
-
-	return 0;
+    return 0;
 }

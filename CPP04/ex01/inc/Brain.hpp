@@ -6,7 +6,7 @@
 /*   By: seilkiv <seilkiv@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 13:32:39 by seilkiv           #+#    #+#             */
-/*   Updated: 2026/07/14 15:52:24 by seilkiv          ###   ########.fr       */
+/*   Updated: 2026/07/16 07:48:30 by seilkiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Brain
 		Brain();
 		Brain(const Brain &ct);
 		Brain& operator=(const Brain &ct);
-		virtual ~Brain();
+		~Brain();
 
 		std::string		getIdea(int index) const;
 		void			setIdea(int index, std::string idea);

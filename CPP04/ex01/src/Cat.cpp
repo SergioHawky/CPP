@@ -6,7 +6,7 @@
 /*   By: seilkiv <seilkiv@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 13:33:13 by seilkiv           #+#    #+#             */
-/*   Updated: 2026/07/14 15:52:24 by seilkiv          ###   ########.fr       */
+/*   Updated: 2026/07/16 07:51:27 by seilkiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 Cat::Cat() : Animal("Cat"), _brain(new Brain())
 {
-	std::cout << ".Cat Default Constructor called!" << std::endl;
+	std::cout << "-> Cat Default Constructor called!" << std::endl;
 };
 
 Cat::Cat(const Cat &ct) : Animal(ct)
 {
 	_brain = new Brain(*ct._brain);
-	std::cout << ".Cat Copy Constructor called!" << std::endl;
+	std::cout << "-> Cat Copy Constructor called!" << std::endl;
 }
 
 Cat &Cat::operator=(const Cat &ct)
@@ -32,19 +32,19 @@ Cat &Cat::operator=(const Cat &ct)
 		delete _brain;
 		_brain = new_brain;
 	}
-	std::cout << ".Cat Copy Assignment Operator called!" << std::endl;
+	std::cout << "-> Cat Copy Assignment Operator called!" << std::endl;
 	return *this;
 }
 
 Cat::~Cat() 
 { 
-	std::cout << ".Cat Destructor called!" << std::endl; 
+	std::cout << "-> Cat Destructor called!" << std::endl; 
 	delete _brain;
 };
 
 void Cat::makeSound() const
 {
-	std::cout << "Meow, Meow" << std::endl;
+	std::cout << "Meowwwwwwww" << std::endl;
 }
 
 Brain* Cat::getBrain()

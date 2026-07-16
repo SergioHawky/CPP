@@ -6,7 +6,7 @@
 /*   By: seilkiv <seilkiv@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 13:32:04 by seilkiv           #+#    #+#             */
-/*   Updated: 2026/07/14 15:52:24 by seilkiv          ###   ########.fr       */
+/*   Updated: 2026/07/16 06:41:42 by seilkiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 Dog::Dog() : Animal("Dog")
 {
-	std::cout << ".Dog Default Constructor called!" << std::endl;
+	std::cout << "-> Dog Default Constructor called!" << std::endl;
 };
 
 Dog::Dog(const Dog &ct) : Animal(ct)
 {
 	_type = ct._type;
-	std::cout << ".Dog Copy Constructor called!" << std::endl;
+	std::cout << "-> Dog Copy Constructor called!" << std::endl;
 }
 
 Dog &Dog::operator=(const Dog &ct)
@@ -29,11 +29,11 @@ Dog &Dog::operator=(const Dog &ct)
 	{
 		this->_type = ct._type;
 	}
-	std::cout << ".Dog Copy Assignment Operator called!" << std::endl;
+	std::cout << "-> Dog Copy Assignment Operator called!" << std::endl;
 	return *this;
 }
 
-Dog::~Dog() { std::cout << ".Dog Destructor called!" << std::endl; };
+Dog::~Dog() { std::cout << "-> Dog Destructor called!" << std::endl; };
 
 void Dog::makeSound() const
 {

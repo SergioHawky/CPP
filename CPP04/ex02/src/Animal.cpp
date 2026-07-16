@@ -6,7 +6,7 @@
 /*   By: seilkiv <seilkiv@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 13:37:08 by seilkiv           #+#    #+#             */
-/*   Updated: 2026/07/14 15:52:24 by seilkiv          ###   ########.fr       */
+/*   Updated: 2026/07/16 06:50:06 by seilkiv          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 Animal::Animal() 
 {
-	std::cout << ".Animal Default Constructor called!" << std::endl;
+	std::cout << "-> Animal Default Constructor called!" << std::endl;
 };
 
 Animal::Animal(std::string type) 
 {
-	std::cout << ".Animal Parameterized Constructor called!" << std::endl;
+	std::cout << "-> Animal Constructor called!" << std::endl;
 	this->_type = type;
 };
 
 Animal::Animal(const Animal &ct)
 {
 	_type = ct._type;
-	std::cout << ".Animal Copy Constructor called!" << std::endl;
+	std::cout << "-> Animal Copy Constructor called!" << std::endl;
 }
 
 Animal &Animal::operator=(const Animal &ct)
@@ -35,15 +35,15 @@ Animal &Animal::operator=(const Animal &ct)
 	{
 		this->_type = ct._type;
 	}
-	std::cout << ".Animal Copy Assignment called!" << std::endl;
+	std::cout << "-> Animal Copy Assignment called!" << std::endl;
 	return *this;
 }
 
-Animal::~Animal() { std::cout << ".Animal Destructor called!" << std::endl; };
+Animal::~Animal() { std::cout << "-> Animal Destructor called!" << std::endl; };
 
 void Animal::makeSound() const
 {
-	std::cout << "No sound defined!" << std::endl;
+	std::cout << "Animal makes a sound" << std::endl;
 };
 
 std::string Animal::getType() const
